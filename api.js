@@ -43,7 +43,7 @@ module.exports = function (req, res, next) {
               }
             }
           }
-          if (queried === true) {
+          if (queryByBot === true) {
             rows.push(newRow);
           }
         }
