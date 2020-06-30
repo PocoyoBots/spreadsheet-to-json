@@ -28,12 +28,14 @@ module.exports = function (req, res, next) {
               var name = key.substring(4);
               var content = entry[key];
               var value = content.$t;
+              if (value.toLowerCase().indexOf(query.toLowerCase()) > -1) {
+                queried = true;
+              }
               if (useIntegers === true && !isNaN(value)) {
                 value = Number(value);
               }
-              var queryByBot = true;
               newRow[name] = value;
-              if (queryByBot === true) {
+              if (queried === true) {
                 if (!columns.hasOwnProperty(name)) {
                   columns[name] = [];
                   columns[name].push(value);
@@ -43,7 +45,7 @@ module.exports = function (req, res, next) {
               }
             }
           }
-          if (queryByBot === true) {
+          if (queried === true) {
             rows.push(newRow);
           }
         }
