@@ -31,8 +31,9 @@ module.exports = function (req, res, next) {
               if (useIntegers === true && !isNaN(value)) {
                 value = Number(value);
               }
+              var queryByBot = true;
               newRow[name] = value;
-              if (queried === true) {
+              if (queryByBot === true) {
                 if (!columns.hasOwnProperty(name)) {
                   columns[name] = [];
                   columns[name].push(value);
